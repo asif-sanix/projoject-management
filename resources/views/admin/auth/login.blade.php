@@ -49,16 +49,16 @@
                                     </a>
                                 </div>
                                 <div class="p-2">
-                                    <form class="form-horizontal" action="">
-        
+                                    <form class="form-horizontal" action="{{ route('admin.login.post') }}" method="post">
+                                      {{csrf_field()}}
                                         <div class="form-group">
                                             <label for="username">Username</label>
-                                            <input type="text" class="form-control" id="username" placeholder="Enter username">
+                                            <input type="text" class="form-control" name="email" id="username" placeholder="Enter username">
                                         </div>
                 
                                         <div class="form-group">
                                             <label for="userpassword">Password</label>
-                                            <input type="password" class="form-control" id="userpassword" placeholder="Enter password">
+                                            <input type="password" class="form-control" name="password" id="userpassword" placeholder="Enter password">
                                         </div>
                 
                                         <div class="custom-control custom-checkbox">

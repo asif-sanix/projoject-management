@@ -47,9 +47,9 @@
 
 
              @foreach ($menus as $menu)
-                @if(!$menu->childs->count() && Route::has("admin.".str_slug($menu->slug, '-').".index"))
-                    <li class="{{ request()->segment(2) == str_slug($menu->slug, '-')?'active':''}}">
-                        <a href="{{ route("admin.".str_slug($menu->slug, '-').".index")}}" class=" waves-effect">
+                @if(!$menu->childs->count() && Route::has("admin.".Str::slug($menu->slug, '-').".index"))
+                    <li class="{{ request()->segment(2) == Str::slug($menu->slug, '-')?'active':''}}">
+                        <a href="{{ route("admin.".Str::slug($menu->slug, '-').".index")}}" class=" waves-effect">
                             <i class="{{ $menu->icon??'fa fa-arrow-right' }}"></i> 
                             <span>{{ $menu->name }}</span>
                         </a>
@@ -61,14 +61,14 @@
                 <li class="{{ ($menu->childs->whereIn('slug',str_replace('-', '_', request()->segment(2)))->count())?'active open':'' }}">
                     <a href="javascript:;" class="has-arrow waves-effect">
                         <i class="{{ $menu->icon??'fa fa-list' }}"></i>
-                        <span class="menu-title" data-i18n="">{{ $menu->name }}</span>
+                        <span>{{ $menu->name }}</span>
                     </a>
                   <ul class="sub-menu" aria-expanded="false">
 
                      @foreach($menu->childs as $child)
-                         @if(Route::has("admin.".str_slug($child->slug, '-').".index"))
+                         @if(Route::has("admin.".Str::slug($child->slug, '-').".index"))
                             <li class="{{ ($child->slug == str_replace('-', '_', request()->segment(2)))?'active':'' }}">
-                                <a href="{{ route('admin.'.str_slug($child->slug, '-').'.index')}}">{{ $child->name }}</a>
+                                <a href="{{ route('admin.'.Str::slug($child->slug, '-').'.index')}}">{{ $child->name }}</a>
                             </li>
                          @endif
 

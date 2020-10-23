@@ -47,4 +47,31 @@ Route::group(['middleware' => 'admin','as' => 'admin.'], function() {
 
     Route::get('dashboard', 'DashboardController@index')->name('dashboard.index')->middleware('can:browse_dashboard');
 
+
+
+    Route::get('bread', 'BreadController@index')->name('bread.index');
+    Route::get('bread/create', 'BreadController@create')->name('bread.create');
+    Route::get('bread/{slug}/edit', 'BreadController@edit')->name('bread.edit');
+    Route::put('bread/{bread}/update', 'BreadController@update')->name('bread.update');
+    Route::delete('bread/{slug}/delete', 'BreadController@destroy')->name('bread.destroy');
+    Route::post('bread', 'BreadController@store')->name('bread.store');
+
+
+    Route::get('role', 'RoleController@index')->name('role.index');
+    Route::get('role/create', 'RoleController@create')->name('role.create');
+    Route::get('role/{role}/edit', 'RoleController@edit')->name('role.edit');
+    Route::post('role', 'RoleController@store')->name('role.store');
+    Route::put('role/{role}', 'RoleController@update')->name('role.update');
+
+
+    Route::get('menu', 'MenuController@index')->name('menu.index');
+    Route::get('menu/create', 'MenuController@create')->name('menu.create');
+    Route::get('menu/{menu}/edit', 'MenuController@edit')->name('menu.edit');
+    Route::post('menu', 'MenuController@store')->name('menu.store');
+    Route::put('menu/{menu}', 'MenuController@update')->name('menu.update');
+    Route::delete('menu/{menu}', 'MenuController@destroy')->name('menu.destroy');
+
+    Route::get('setting', 'MenuController@index')->name('setting.index');
+    Route::get('site-setting', 'SiteSettingController@index')->name('site-setting.index')->middleware('can:browse_site_setting');
+
 });
