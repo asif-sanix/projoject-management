@@ -46,7 +46,7 @@ top: 9px;
     {!! Form::open(['route'=>['admin.'.request()->segment(2).'.update',$menu->slug],'method'=>'put','id'=>'breadForm']) !!}
     <div class="form-group">
         <label for="">Name</label>
-        {!! Form::text('name', ($menu->title)?$menu->title:title_case(str_replace('_', ' ', $menu->slug)) , ['class'=>'form-control']) !!}
+        {!! Form::text('name', ($menu->title)?$menu->title:Str::title(str_replace('_', ' ', $menu->slug)) , ['class'=>'form-control']) !!}
     </div>
     <div class="form-group">
         <label for="">Icon</label>
